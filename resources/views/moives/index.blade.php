@@ -3,12 +3,12 @@
 @section('content')
 
     <div>
-        <h2>Genres</h2>
+        <h2>Movies</h2>
     </div>
 
     <ul class="breadcrumb mt-2">
         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-        <li class="breadcrumb-item">Genres</li>
+        <li class="breadcrumb-item">Movies</li>
     </ul>
 
     <div class="row">
@@ -21,7 +21,7 @@
 
                     <div class="col-md-12">
 
-                        <form method="post" action="{{ route('genres.bulk_delete') }}" style="display: inline-block;">
+                        <form method="post" action="{{ route('movies.bulk_delete') }}" style="display: inline-block;">
                             @csrf
                             @method('delete')
 
@@ -59,9 +59,12 @@
                                             </label>
                                         </div>
                                     </th>
-                                    <th>Name</th>
-                                    <th>Movies Count</th>
-                                    <th>Created at</th>
+                                    <th>Poster</th>
+                                    <th>Title</th>
+                                    <th>Genres</th>
+                                    <th>Vote</th>
+                                    <th>Vote Count</th>
+                                    <th>Release Date</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
@@ -90,16 +93,19 @@
             serverSide: true,
             processing: true,
             ajax: {
-                url: '{{ route('genres.data') }}',
+                url: '{{ route('movies.data') }}',
             },
             columns: [
                 {data: 'record_select', name: 'record_select', searchable: false, sortable: false, width: '1%'},
-                {data: 'name', name: 'name'},
-                {data: 'movies_count', name: 'movies_count', searchable: false},
-                {data: 'created_at', name: 'created_at', searchable: false},
+                {data: 'poster', name: 'poster' , searchable: false , sortable: false},
+                {data: 'title', name: 'title', width: '15%'},
+                {data: 'genres', name: 'genres', searchable: false},
+                {data: 'vote', name: 'vote'},
+                {data: 'vote_count', name: 'vote_count'},
+                {data: 'release_data', name: 'release_data'},
                 {data: 'actions', name: 'actions', searchable: false, sortable: false, width: '20%'},
             ],
-            order: [[2, 'desc']],
+            order: [[5, 'desc']],
             drawCallback: function (settings) {
                 $('.record__select').prop('checked', false);
                 $('#record__select-all').prop('checked', false);

@@ -16,7 +16,7 @@ class GenreController extends Controller
 
     public function data()
     {
-        $genres = Genre::select();
+        $genres = Genre::withCount(['movies']);
 
         return DataTables::of($genres)
             ->addColumn('record_select', 'genres.data_table.record_select')

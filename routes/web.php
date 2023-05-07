@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GenreController;
+use App\Http\Controllers\MovieController;
 use App\Http\Controllers\ProfileController;
 
 
@@ -18,6 +19,11 @@ Route::group(['middleware' => 'auth'],function()
     Route::get('/genres/data', [GenreController::class, 'data'])->name('genres.data');
     Route::delete('/genres/bulk_delete', [GenreController::class , 'bulkDelete'])->name('genres.bulk_delete');
     Route::resource('genres', GenreController::class)->only(['index', 'destroy']);
+
+    //movie routes
+    Route::get('/movies/data', [MovieController::class, 'data'])->name('movies.data');
+    Route::delete('/movies/bulk_delete', [MovieController::class , 'bulkDelete'])->name('movies.bulk_delete');
+    Route::resource('movies', MovieController::class)->only(['index', 'destroy']);
     
 });
 

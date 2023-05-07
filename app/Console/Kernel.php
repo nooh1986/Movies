@@ -3,6 +3,7 @@
 namespace App\Console;
 
 use App\Console\Commands\GetGenres;
+use App\Console\Commands\GetMovies;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -22,6 +23,7 @@ class Kernel extends ConsoleKernel
     protected function commands(): void
     {
         GetGenres::class;
+        GetMovies::class;
         
         $this->load(__DIR__.'/Commands');
 
