@@ -2,7 +2,9 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Actor;
 use App\Models\Genre;
+use App\Models\Image;
 use App\Models\Movie;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
@@ -34,9 +36,12 @@ class GetMovies extends Command
         
             foreach($response->json()['results'] as $result)
             {
-                $movie = Movie::create([
+                $movie = Movie::updateOrCreate(
+                [
                     'e_id'         => $result['id'],
                     'title'        => $result['original_title'],
+                ],
+                [    
                     'description'  => $result['overview'],
                     'poster'       => $result['poster_path'],
                     'banner'       => $result['backdrop_path'],
@@ -50,8 +55,58 @@ class GetMovies extends Command
                     $genre = Genre::where('e_id', $result1)->first();
                     $movie->genres()->attach($genre->id); 
                 }
-            }
+            
+                $this->attachActors($movie);
+
+                $this->attachImages($movie);
+                
+            }    
+            
         }
-        
+    }    
+
+    private function attachActors(Movie $movie)
+    {
+        $response = Http::get(config('services.tmdb.base_url') . '/movie/' . $movie->e_id . '/credits?api_key=' . config('services.tmdb.api_key'));
+
+        foreach ($response->json()['cast'] as $index => $cast) {
+
+            if ($cast['known_for_department'] != 'Acting') continue;
+
+            if ($index == 12) break;
+
+            $actor = Actor::where('e_id', $cast['id'])->first();
+
+            if (!$actor) {
+
+                $actor = Actor::create([
+                    'e_id' => $cast['id'],
+                    'name' => $cast['name'],
+                    'profile' => $cast['profile_path'],
+                ]);
+
+            }//end of if
+
+            $movie->actors()->syncWithoutDetaching($actor->id);    
+
+        }//end of for each
+
+    }// end of attachActors
+
+    public function attachImages(Movie $movie)
+    {
+        $response = Http::get(config('services.tmdb.base_url') . '/movie/' . $movie->e_id . '/images?api_key=' . config('services.tmdb.api_key'));
+
+        foreach ($response->json()['backdrops'] as $index => $img)
+        {
+            if($index == 8)
+            {
+                break;
+            }
+            Image::create([
+                'movie_id' => $movie->id,
+                'name' => $img['file_path']
+            ]);
+        }
     }
 }

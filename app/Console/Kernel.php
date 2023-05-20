@@ -14,7 +14,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->command('get:genres')->everyMinute();
+        $schedule->command('get:movies')->everyMinute()->withoutOverlapping();
     }
 
     /**

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ActorController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\ProfileController;
@@ -23,7 +24,12 @@ Route::group(['middleware' => 'auth'],function()
     //movie routes
     Route::get('/movies/data', [MovieController::class, 'data'])->name('movies.data');
     Route::delete('/movies/bulk_delete', [MovieController::class , 'bulkDelete'])->name('movies.bulk_delete');
-    Route::resource('movies', MovieController::class)->only(['index', 'destroy']);
+    Route::resource('movies', MovieController::class)->only(['index', 'destroy' , 'show']);
+
+    //actor routes
+    Route::get('/actores/data', [ActorController::class, 'data'])->name('actores.data');
+    Route::delete('/actores/bulk_delete', [ActorController::class , 'bulkDelete'])->name('actores.bulk_delete');
+    Route::resource('actores', ActorController::class)->only(['index', 'destroy']);
     
 });
 

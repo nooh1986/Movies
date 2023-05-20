@@ -18,5 +18,7 @@
         
         <li><a class="app-menu__item {{ request()->is('*movies*') ? 'active' : '' }}" href="{{ route('movies.index') }}"><i class="app-menu__icon fa fa-film"></i> <span class="app-menu__label">Movies</span></a></li>
         
+        <li><a class="app-menu__item {{ request()->is('*actors*') ? 'active' : '' }}" href="{{ route('actores.index') }}"><i class="app-menu__icon fa fa-address-book-o"></i> <span class="app-menu__label">Actores</span></a></li>
+        
     </ul>
 </aside>

@@ -32,7 +32,7 @@
     <script type="text/javascript" src="{{ asset('assets/plugins/dataTables.bootstrap/dataTables.bootstrap.min.js') }}"></script>
 
     {{--magnific-popup--}}
-    <link rel="stylesheet" href="{{ asset('admin_assets/plugins/magnific-popup/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/magnific-popup/magnific-popup.css') }}">
 
     <script src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
 

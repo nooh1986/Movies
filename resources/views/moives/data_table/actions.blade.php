@@ -1,3 +1,5 @@
+<a href="{{ route('movies.show', $id) }}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> Show</a>
+
 <form action="{{ route('movies.destroy', $id) }}" class="my-1 my-xl-0" method="post" style="display: inline-block;">
     @csrf
     @method('delete')

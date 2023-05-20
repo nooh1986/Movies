@@ -38,6 +38,13 @@ class MovieController extends Controller
 
     }// end of data
 
+
+    public function show(Movie $movie)
+    {
+        $movie->load(['genres','actors','images']);
+        return view('moives.show', compact('movie'));
+    }
+
     public function destroy(Movie $movie)
     {
         $this->delete($movie);
