@@ -7,7 +7,7 @@
     </div>
 
     <ul class="breadcrumb mt-2">
-        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
         <li class="breadcrumb-item">Genres</li>
     </ul>
 
@@ -61,6 +61,7 @@
                                     </th>
                                     <th>Name</th>
                                     <th>Movies Count</th>
+                                    <th>Related Movies</th>
                                     <th>Created at</th>
                                     <th>Action</th>
                                 </tr>
@@ -96,6 +97,7 @@
                 {data: 'record_select', name: 'record_select', searchable: false, sortable: false, width: '1%'},
                 {data: 'name', name: 'name'},
                 {data: 'movies_count', name: 'movies_count', searchable: false},
+                {data: 'related_movies', name: 'related_movies', searchable: false ,sortable: false},
                 {data: 'created_at', name: 'created_at', searchable: false},
                 {data: 'actions', name: 'actions', searchable: false, sortable: false, width: '20%'},
             ],

@@ -7,7 +7,7 @@
     </div>
 
     <ul class="breadcrumb mt-2">
-        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
         <li class="breadcrumb-item">Actores</li>
     </ul>
 
@@ -63,6 +63,7 @@
                                     <th>Image</th>
                                     <th>Name</th>
                                     <th>Movies Count</th>
+                                    <th>Movies Related</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
@@ -98,6 +99,7 @@
                 {data: 'profile', name: 'profile' , searchable: false, sortable: false},
                 {data: 'name', name: 'name'},
                 {data: 'movies_count', name: 'movies_count', searchable: false},
+                {data: 'related_movies', name: 'related_movies', searchable: false ,sortable: false},
                 {data: 'actions', name: 'actions', searchable: false, sortable: false, width: '20%'},
             ],
             order: [[3, 'desc']],

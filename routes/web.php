@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ActorController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\MovieController;
@@ -14,7 +16,13 @@ Route::get('/', function () { return view('auth.login'); })->name('log');
 Route::group(['middleware' => 'auth'],function()
 {
     //home
-    Route::get('/dashboard', function () { return view('home'); })->name('dashboard');
+    Route::get('/dashboard', [HomeController::class, 'home'])->name('home');
+    Route::get('/statistics', [HomeController::class, 'statistics'])->name('statistics');
+
+    //users routes
+    Route::get('/users/data', [UserController::class, 'data'])->name('users.data');
+    Route::delete('/users/bulk_delete', [UserController::class , 'bulkDelete'])->name('users.bulk_delete');
+    Route::resource('users', UserController::class);
 
     //genre routes
     Route::get('/genres/data', [GenreController::class, 'data'])->name('genres.data');

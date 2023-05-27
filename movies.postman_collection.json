@@ -1,0 +1,255 @@
+{
+	"info": {
+		"_postman_id": "43f17cda-0b84-454b-80c9-fa09d37a2982",
+		"name": "movies",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15225983"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "noohaboalkanj@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "nooh1986",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://almaestro.org/api/login",
+							"protocol": "https",
+							"host": [
+								"almaestro",
+								"org"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "noor",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "aaa@hhh.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "2254223",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://almaestro.org/api/register",
+							"protocol": "https",
+							"host": [
+								"almaestro",
+								"org"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Genres",
+			"item": [
+				{
+					"name": "All genres",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://almaestro.org/api/genre",
+							"protocol": "https",
+							"host": [
+								"almaestro",
+								"org"
+							],
+							"path": [
+								"api",
+								"genre"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "movies for genres",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://almaestro.org/api/genre/5/movie",
+							"protocol": "https",
+							"host": [
+								"almaestro",
+								"org"
+							],
+							"path": [
+								"api",
+								"genre",
+								"5",
+								"movie"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Actors",
+			"item": [
+				{
+					"name": "movies for actors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://almaestro.org/api/actor/5/movie",
+							"protocol": "https",
+							"host": [
+								"almaestro",
+								"org"
+							],
+							"path": [
+								"api",
+								"actor",
+								"5",
+								"movie"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Movies",
+			"item": [
+				{
+					"name": "All movies",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://almaestro.org/api/movie",
+							"protocol": "https",
+							"host": [
+								"almaestro",
+								"org"
+							],
+							"path": [
+								"api",
+								"movie"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "movie images",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://almaestro.org/api/movie/6/images",
+							"protocol": "https",
+							"host": [
+								"almaestro",
+								"org"
+							],
+							"path": [
+								"api",
+								"movie",
+								"6",
+								"images"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "movie actors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://almaestro.org/api/movie/6/actors",
+							"protocol": "https",
+							"host": [
+								"almaestro",
+								"org"
+							],
+							"path": [
+								"api",
+								"movie",
+								"6",
+								"actors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "movie related",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://almaestro.org/api/movie/6/related_movie",
+							"protocol": "https",
+							"host": [
+								"almaestro",
+								"org"
+							],
+							"path": [
+								"api",
+								"movie",
+								"6",
+								"related_movie"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

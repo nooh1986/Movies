@@ -7,7 +7,7 @@
     </div>
 
     <ul class="breadcrumb mt-2">
-        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
         <li class="breadcrumb-item">Movies</li>
     </ul>
 
@@ -34,9 +34,31 @@
 
                 <div class="row">
 
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <input type="text" id="data-table-search" class="form-control" autofocus placeholder="Search">
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <select id="genre" class="form-control select2" required>
+                                <option value="">All Genres</option>
+                                @foreach ($genres as $genre)
+                                    <option value="{{ $genre->id }}" {{ $genre->id == request()->genre_id ? 'selected' : '' }}>{{ $genre->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <select id="actor" class="form-control select2" required>
+                                <option value="">All Actors</option>
+                                @foreach ($actors as $actor)
+                                    <option value="{{ $actor->id }}" {{ $actor->id == request()->actor_id ? 'selected' : '' }}>{{ $actor->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
 
@@ -88,12 +110,20 @@
 
     <script>
 
+        let genre = "{{ request()->genre_id }}";
+        let actor = "{{ request()->actor_id }}";
+
         let genresTable = $('#genres-table').DataTable({
             dom: "tiplr",
             serverSide: true,
             processing: true,
             ajax: {
                 url: '{{ route('movies.data') }}',
+
+                data: function (params) {
+                    params.genre_id = genre;
+                    params.actor_id = actor;
+                }
             },
             columns: [
                 {data: 'record_select', name: 'record_select', searchable: false, sortable: false, width: '1%'},
@@ -113,6 +143,16 @@
                 $('#bulk-delete').attr('disabled', true);
             }
         });
+
+        $('#genre').on('change' , function(){
+            genre = this.value;
+            genresTable.ajax.reload();
+        })
+
+        $('#actor').on('change' , function(){
+            actor = this.value;
+            genresTable.ajax.reload();
+        })
 
         $('#data-table-search').keyup(function () {
             genresTable.search(this.value).draw();

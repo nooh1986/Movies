@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\Actor;
 use App\Models\Genre;
 use App\Models\Movie;
 use Illuminate\Http\Request;
@@ -33,6 +34,19 @@ class GenreController extends Controller
     {
         $movies = Movie::with(['genres'])->whereHas('genres', function ($query) use ($genre) {
             $query->where('id', $genre->id);
+        })->paginate(10);
+
+        $data = MoiveResource::collection($movies)->response()->getData(true);
+        
+        return response()->api($data);
+    }
+
+
+    public function movies_actors(Actor $actor)
+    {
+        $movies = Movie::with(['actors'])->whereHas('actors' , function($query) use ($actor)
+        {
+            $query->where('id' , $actor->id);
         })->paginate(10);
 
         $data = MoiveResource::collection($movies)->response()->getData(true);

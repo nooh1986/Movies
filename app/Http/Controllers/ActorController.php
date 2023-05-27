@@ -24,9 +24,12 @@ class ActorController extends Controller
                 return view('actores.data_table.profile' , compact('actor'));
             })
 
+            ->addColumn('related_movies', 'actores.data_table.related_movies')
+            
             ->addColumn('actions', 'actores.data_table.actions')
 
-            ->rawColumns(['record_select','actions'])
+            ->rawColumns(['record_select','related_movies','actions'])
+
             ->toJson();
 
     }// end of data

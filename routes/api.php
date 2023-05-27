@@ -16,13 +16,15 @@ Route::post('/genre', [GenreController::class, 'index']);
 
 Route::get('/genre/{genre}/movie', [GenreController::class, 'movies']);
 
-Route::post('/moive', [MoiveController::class, 'index']);
+Route::get('/actor/{actor}/movie', [GenreController::class, 'movies_actors']);
 
-Route::get('/moive/{movie}/images', [MoiveController::class, 'images']);
+Route::post('/movie', [MoiveController::class, 'index']);
 
-Route::get('/moive/{movie}/actors', [MoiveController::class, 'actors']);
+Route::get('/movie/{movie}/images', [MoiveController::class, 'images']);
 
-Route::get('/moive/{movie}/related_movie', [MoiveController::class, 'related_movie']);
+Route::get('/movie/{movie}/actors', [MoiveController::class, 'actors']);
+
+Route::get('/movie/{movie}/related_movie', [MoiveController::class, 'related_movie']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

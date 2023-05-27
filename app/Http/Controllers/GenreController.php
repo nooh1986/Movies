@@ -20,11 +20,17 @@ class GenreController extends Controller
 
         return DataTables::of($genres)
             ->addColumn('record_select', 'genres.data_table.record_select')
+
             ->editColumn('created_at', function (Genre $genre) {
                 return $genre->created_at->format('Y-m-d');
             })
+
+            ->addColumn('related_movies', 'genres.data_table.related_movies')
+
             ->addColumn('actions', 'genres.data_table.actions')
-            ->rawColumns(['record_select', 'actions'])
+            
+            ->rawColumns(['record_select','related_movies' ,'actions'])
+            
             ->toJson();
 
     }// end of data

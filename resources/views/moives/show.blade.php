@@ -7,7 +7,7 @@
     </div>
 
     <ul class="breadcrumb mt-2">
-        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
         <li class="breadcrumb-item"><a href="{{ route('movies.index') }}">Movies</a></li>
         <li class="breadcrumb-item">SHOW</li>
     </ul>
