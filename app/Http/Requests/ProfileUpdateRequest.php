@@ -8,16 +8,21 @@ use Illuminate\Validation\Rule;
 
 class ProfileUpdateRequest extends FormRequest
 {
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\Rule|array|string>
-     */
-    public function rules(): array
+    public function authorize()
     {
-        return [
-            'name' => ['string', 'max:255'],
-            'email' => ['email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
-        ];
+        return true;
     }
+
+
+    public function rules()
+    {
+        $rules = [
+            'name' => 'required',
+            'email' => 'required|email|unique:users,id,' . auth()->user()->id,
+        ];
+
+        return $rules;
+
+    }//end of rules
+    
 }

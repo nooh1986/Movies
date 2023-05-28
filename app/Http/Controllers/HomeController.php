@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Actor;
 use App\Models\Genre;
 use App\Models\Movie;
@@ -11,10 +12,11 @@ class HomeController extends Controller
 {
     public function home()
     {
-        $latestMovies = Movie::limit(10)->orderBy('release_data', 'desc')->get();
-        
-        
-        return view('home' , compact('latestMovies'));
+        $latestMovies = Movie::limit(5)->orderBy('release_data', 'desc')->get();
+        $mostRateds = Movie::limit(5)->orderBy('vote_count', 'desc')->get();
+        $latestUsers = User::limit(5)->orderBy('created_at', 'desc')->get();
+
+        return view('home' , compact('latestMovies','mostRateds','latestUsers'));
     }
 
 

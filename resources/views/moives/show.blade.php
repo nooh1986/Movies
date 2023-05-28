@@ -3,13 +3,13 @@
 @section('content')
 
     <div>
-        <h2>@lang('movies.movies')</h2>
+        <h2>Movies</h2>
     </div>
 
     <ul class="breadcrumb mt-2">
         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
         <li class="breadcrumb-item"><a href="{{ route('movies.index') }}">Movies</a></li>
-        <li class="breadcrumb-item">SHOW</li>
+        <li class="breadcrumb-item">Show</li>
     </ul>
 
     <div class="row">
@@ -61,7 +61,7 @@
                             @foreach ($movie->actors as $actor)
 
                                 <div class="col-md-2 my-2">
-                                    <a href="">
+                                    <a href="{{ route('movies.index', ['actor_id' => $actor->id]) }}">
                                         <img src="{{ $actor->profile_path }}" class="img-fluid" alt="">
                                     </a>
                                 </div><!-- end of col -->
