@@ -21,6 +21,8 @@
                     @csrf
                     @method('post')
 
+                    @include('partials._errors')
+
                     {{--logo--}}
                     <div class="form-group">
                         <label>Logo</label>

@@ -21,7 +21,7 @@
                     @csrf
                     @method('put')
 
-                    
+                    @include('partials._errors')
 
                     {{--old_password--}}
                     <div class="form-group">

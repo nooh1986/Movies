@@ -22,6 +22,7 @@
                     @csrf
                     @method('post')
 
+                    @include('partials._errors')
                     
                     {{--name--}}
                     <div class="form-group">

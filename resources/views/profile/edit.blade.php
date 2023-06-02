@@ -21,6 +21,8 @@
                     @csrf
                     @method('put')
 
+                    @include('partials._errors')
+                    
                     {{--name--}}
                     <div class="form-group">
                         <label>Name</label>
